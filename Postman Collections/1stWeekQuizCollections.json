@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "45764861-c612-48f3-a16d-d2537c000da4",
+		"name": "1stWeek",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrive a record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3d6d7b3a-67f4-47fd-9f8b-b076d385e268",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200 , 201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "076b40cb-75aa-4640-899c-876fcf143dcd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "{{URL}}api/now/v1/table/incident"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2659ecfe-2b49-44fb-8bca-3320aaf09bb7",
+						"exec": [
+							"Resp = pm.response.json();\r",
+							"//Arg:Name of the parameter,value of the parameter.\r",
+							"pm.globals.set(\"Sys_Id\",Resp.result.sys_id)\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "a912eb1c-f54d-405d-ac05-b942f38e619d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/now/v1/table/:tableName",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"now",
+						"v1",
+						"table",
+						":tableName"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "incident",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify a record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "577b3d32-d4b0-4984-87c2-5899814ed6fc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200 , 201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "56b0dfbc-509a-4599-ad7f-be38019a229e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Test incident creation through REST PUT\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/now/v1/table/incident/:sys_Id?sysparm_exclude_ref_link=true",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"now",
+						"v1",
+						"table",
+						"incident",
+						":sys_Id"
+					],
+					"query": [
+						{
+							"key": "sysparm_exclude_ref_link",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "sys_Id",
+							"value": "{{Sys_Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify a record Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "564380f4-f5bb-45f0-86fe-3f2765904248",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200 , 201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "02b6d806-c624-4c54-9c8e-f2e73c00ec44",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"PATCH the data\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/now/v1/table/incident/:sys_Id?sysparm_exclude_ref_link=true",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"now",
+						"v1",
+						"table",
+						"incident",
+						":sys_Id"
+					],
+					"query": [
+						{
+							"key": "sysparm_exclude_ref_link",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"id": "a3e44c60-09f3-489b-8c2d-bafd61073c36",
+							"key": "sys_Id",
+							"value": "{{Sys_Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "089548a9-0e92-4cef-97e9-edde30a5322e",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "818dd763-e6e2-4d48-baf5-7368c9a3b112",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/now/table/:tableName/:sys_id",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"now",
+						"table",
+						":tableName",
+						":sys_id"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "incident",
+							"type": "string"
+						},
+						{
+							"key": "sys_id",
+							"value": "{{Sys_Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "6DnO8-FiAzk/",
+			"username": "{{Username}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "24d61413-8087-4d70-835d-b0ea97d1a2bd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8db7c1dc-1652-4174-b938-ccb7203a9ba7",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
