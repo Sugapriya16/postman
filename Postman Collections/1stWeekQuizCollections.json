@@ -85,13 +85,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URL}}api/now/able/:tableName/:sys_id",
+					"raw": "{{URL}}api/now/v1/table/:tableName/:sys_id",
 					"host": [
 						"{{URL}}api"
 					],
 					"path": [
 						"now",
-						"able",
+						"v1",
+						"table",
 						":tableName",
 						":sys_id"
 					],
