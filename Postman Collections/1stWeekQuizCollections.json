@@ -63,6 +63,20 @@
 		},
 		{
 			"name": "Retrive a record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "496dd8e5-a763-4915-a906-e9e78928518b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "55192bc1-c478-4d63-9d2e-ec19b9823494",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -71,16 +85,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URL}}api/now/v1/table/:tableName/:sysId",
+					"raw": "{{URL}}api/now/able/:tableName/:sys_id",
 					"host": [
 						"{{URL}}api"
 					],
 					"path": [
 						"now",
-						"v1",
-						"table",
+						"able",
 						":tableName",
-						":sysId"
+						":sys_id"
 					],
 					"variable": [
 						{
@@ -88,7 +101,7 @@
 							"value": "incident"
 						},
 						{
-							"key": "sysId",
+							"key": "sys_id",
 							"value": "{{Sys_Id}}"
 						}
 					]
