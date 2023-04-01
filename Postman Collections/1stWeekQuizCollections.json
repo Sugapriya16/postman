@@ -6,47 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Retrive a record",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "3d6d7b3a-67f4-47fd-9f8b-b076d385e268",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200 , 201);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"_postman_id": "076b40cb-75aa-4640-899c-876fcf143dcd",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true,
-				"disabledSystemHeaders": {
-					"accept": true
-				}
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": "{{URL}}api/now/v1/table/incident"
-			},
-			"response": []
-		},
-		{
 			"name": "Create a record",
 			"event": [
 				{
@@ -65,7 +24,7 @@
 					}
 				}
 			],
-			"_postman_id": "a912eb1c-f54d-405d-ac05-b942f38e619d",
+			"id": "a912eb1c-f54d-405d-ac05-b942f38e619d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -95,8 +54,7 @@
 					"variable": [
 						{
 							"key": "tableName",
-							"value": "incident",
-							"type": "string"
+							"value": "incident"
 						}
 					]
 				}
@@ -119,7 +77,7 @@
 					}
 				}
 			],
-			"_postman_id": "56b0dfbc-509a-4599-ad7f-be38019a229e",
+			"id": "56b0dfbc-509a-4599-ad7f-be38019a229e",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -156,8 +114,7 @@
 					"variable": [
 						{
 							"key": "sys_Id",
-							"value": "{{Sys_Id}}",
-							"type": "string"
+							"value": "{{Sys_Id}}"
 						}
 					]
 				}
@@ -180,7 +137,7 @@
 					}
 				}
 			],
-			"_postman_id": "02b6d806-c624-4c54-9c8e-f2e73c00ec44",
+			"id": "02b6d806-c624-4c54-9c8e-f2e73c00ec44",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -218,8 +175,7 @@
 						{
 							"id": "a3e44c60-09f3-489b-8c2d-bafd61073c36",
 							"key": "sys_Id",
-							"value": "{{Sys_Id}}",
-							"type": "string"
+							"value": "{{Sys_Id}}"
 						}
 					]
 				}
@@ -242,7 +198,7 @@
 					}
 				}
 			],
-			"_postman_id": "818dd763-e6e2-4d48-baf5-7368c9a3b112",
+			"id": "818dd763-e6e2-4d48-baf5-7368c9a3b112",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -251,10 +207,7 @@
 				"header": [],
 				"body": {
 					"mode": "formdata",
-					"formdata": [],
-					"options": {
-						"formdata": {}
-					}
+					"formdata": []
 				},
 				"url": {
 					"raw": "{{URL}}api/now/table/:tableName/:sys_id",
@@ -270,13 +223,11 @@
 					"variable": [
 						{
 							"key": "tableName",
-							"value": "incident",
-							"type": "string"
+							"value": "incident"
 						},
 						{
 							"key": "sys_id",
-							"value": "{{Sys_Id}}",
-							"type": "string"
+							"value": "{{Sys_Id}}"
 						}
 					]
 				}
