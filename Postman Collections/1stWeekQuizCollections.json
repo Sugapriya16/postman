@@ -69,7 +69,30 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{URL}}api/now/v1/table/:tableName/:sysId",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"now",
+						"v1",
+						"table",
+						":tableName",
+						":sysId"
+					],
+					"variable": [
+						{
+							"key": "tableName",
+							"value": "incident"
+						},
+						{
+							"key": "sysId",
+							"value": "{{Sys_Id}}"
+						}
+					]
+				}
 			},
 			"response": []
 		},
