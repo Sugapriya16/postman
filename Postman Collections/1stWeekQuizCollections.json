@@ -62,7 +62,7 @@
 			"response": []
 		},
 		{
-			"name": "Get a record",
+			"name": "Retrive a record",
 			"id": "55192bc1-c478-4d63-9d2e-ec19b9823494",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
