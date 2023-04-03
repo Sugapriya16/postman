@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"short_description\": \"Post the data\",\r\n    \"description\": \"Post the data\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
