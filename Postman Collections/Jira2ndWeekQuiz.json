@@ -1,0 +1,733 @@
+{
+	"info": {
+		"_postman_id": "c42a01c1-45cb-402c-a7d5-95dc5d0e5e54",
+		"name": "Jira2ndWeek",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create issue-Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c96ee7c-ff47-434d-8a59-7c879884d5fc",
+						"exec": [
+							"Resp = pm.response.json();\r",
+							"pm.globals.set(\"Task_Key\",Resp.key)\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "33a90c74-919c-442f-ad9a-3e9e0457e2e1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\":{\r\n        \"project\":{\r\n            \"key\": \"FIR\"\r\n        },\r\n        \"summary\":\"First task created using API call\",\r\n        \"issuetype\":{\r\n            \"name\":\"Task\"\r\n        }\r\n\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://sugapriyams.atlassian.net/rest/api/3/issue"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0dd92372-b8c8-4890-bd2c-f8af95de7bf8",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "0e9bb9ba-add1-4755-a32d-10ca4c3fdcb6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\":{\r\n        \"project\":{\r\n            \"key\": \"FIR\"\r\n        },\r\n        \"summary\":\"API call\",\r\n        \"issuetype\":{\r\n            \"name\":\"Task\"\r\n        }\r\n\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/api/3/issue/:Key",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"issue",
+						":Key"
+					],
+					"variable": [
+						{
+							"key": "Key",
+							"value": "{{Task_Key}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a93a100-9a8d-4b6c-88f6-bc6339a28903",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "5e75e056-bb4c-4cb7-bfbd-b901b532a744",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"FIR\"\r\n        },\r\n        \"summary\": \"API call\",\r\n        \"issuetype\": {\r\n            \"name\": \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}rest/api/3/issue/:Key",
+					"host": [
+						"{{URL}}rest"
+					],
+					"path": [
+						"api",
+						"3",
+						"issue",
+						":Key"
+					],
+					"variable": [
+						{
+							"key": "Key",
+							"value": "{{Task_Key}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create issue-Bug",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "186cde85-f7ab-4d38-843f-b4fe4e4fdbe5",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6fb996f-092f-4f28-82b2-1b0814b4ac3d",
+						"exec": [
+							"Resp = pm.response.json();\r",
+							"pm.globals.set(\"Bug_Key\",Resp.key)\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "96a8fd52-a951-47bc-9c4e-c01847ed21cb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"id\": \"10001\"\r\n       },\r\n       \"summary\": \"No REST for the Wicked.\",\r\n       \"issuetype\": {\r\n          \"id\": \"10008\"\r\n       }\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}/rest/api/3/issue"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Bug",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "47e65be8-4800-4b63-9d94-105c70124380",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "2c1921c0-7830-4d0a-a160-4aea397c6806",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"id\": \"10001\"\r\n       },\r\n       \"summary\": \"Using Rest summary was edited.\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/api/3/issue/:key",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"issue",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "{{Bug_Key}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Bug",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db865270-8572-4212-afbb-9e668c80d70a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "18dee528-6435-428e-9277-2709f96c55e1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/rest/api/3/issue/:key",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"issue",
+						":key"
+					],
+					"variable": [
+						{
+							"key": "key",
+							"value": "{{Bug_Key}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "To get all Issue Type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "928ff076-a1e7-4370-88bf-2937fcd58433",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "21ff751d-7f39-4efa-a813-c4d2648f0a13",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{URL}}/rest/api/3/issuetype"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "17d2cf96-d07b-4aad-a18b-5978fad5b6c4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"Resp = pm.response.json();\r",
+							"pm.globals.set(\"Dashboard-Id\",Resp.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1f5624b0-a814-42e4-a3d4-0683025ae16d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"A dashboard to help auditors identify sample of issues to check.\",\r\n    \"editPermissions\": [],\r\n    \"name\": \"Auditors dashboard for Second Project\",\r\n     \r\n    \"sharePermissions\": [\r\n        {\r\n            \"type\": \"project\",\r\n            \r\n                \"project\": {\r\n                    \"id\": \"10001\",\r\n                    \"favourite\": true\r\n                }\r\n            \r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}/rest/api/3/dashboard"
+			},
+			"response": []
+		},
+		{
+			"name": "Get dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6538e944-0fe4-49e2-8d49-3b6a5f952667",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "7a5cac6e-480c-4143-92f9-198f56b55733",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:id",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3f6685dc-e623-42d1-aa9f-b35b562ffbd8",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "92a56432-2234-4afb-95b9-a92be97e8869",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"A dashboard to help auditors identify sample of issues to check.\",\r\n    \"editPermissions\": [],\r\n    \"name\": \"Dashboard name was edited\",\r\n   \r\n    \"sharePermissions\": [\r\n        {\r\n            \"type\": \"project\",\r\n            \r\n                \"project\": {\r\n                    \"id\": \"10001\",\r\n                    \"favourite\": false\r\n                }\r\n            \r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:id",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All gadgets",
+			"_postman_id": "4c7f1a53-4bdb-4119-b44e-bae4a37c68e9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{URL}}/rest/api/3/dashboard/gadgets"
+			},
+			"response": []
+		},
+		{
+			"name": "Add gadget to dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6296bf65-a9f5-486f-9122-f47d03dedcf7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"Resp = pm.response.json();\r",
+							"pm.globals.set(\"Gadgets-Id\",Resp.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "e204e047-a3d2-4ed0-be1c-7bd317310d88",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"color\": \"blue\",\r\n  \"ignoreUriAndModuleKeyValidation\": false,\r\n  \"uri\": \"rest/gadgets/1.0/g/com.atlassian.jira.gadgets:assigned-to-me-gadget/gadgets/assigned-to-me-gadget.xml\",\r\n  \"position\": {\r\n    \"column\": 1,\r\n     \"row\": 0\r\n  },\r\n  \"title\": \"Assigned to Me\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:dashboardId/gadget",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":dashboardId",
+						"gadget"
+					],
+					"variable": [
+						{
+							"key": "dashboardId",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update gadget on dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72dcd927-9187-44eb-b3fd-4a2685937b57",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "c2a70900-d758-438e-aec7-305c38c19091",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"color\": \"cyan\",\r\n  \"position\": {\r\n    \"column\": 1,\r\n    \"row\": 1\r\n  },\r\n  \"title\": \"My new gadget title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:dashboardId/gadget/:gadgetId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":dashboardId",
+						"gadget",
+						":gadgetId"
+					],
+					"variable": [
+						{
+							"key": "dashboardId",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						},
+						{
+							"key": "gadgetId",
+							"value": "{{Gadgets-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove gadget from dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c221c538-5d52-488e-acfc-f3160e131bbb",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "f8579ab3-cb4d-4add-a1db-963900eac649",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:dashboardId/gadget/:gadgetId",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":dashboardId",
+						"gadget",
+						":gadgetId"
+					],
+					"variable": [
+						{
+							"key": "dashboardId",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						},
+						{
+							"key": "gadgetId",
+							"value": "{{Gadgets-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6538e944-0fe4-49e2-8d49-3b6a5f952667",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "1c68ac58-9a35-4ea4-821f-be35911e769b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/rest/api/3/dashboard/:id",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"dashboard",
+						":id"
+					],
+					"variable": [
+						{
+							"id": "9759c170-fd3e-4748-8ce8-4192d4604ca1",
+							"key": "id",
+							"value": "{{Dashboard-Id}}",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{Password}}",
+			"username": "{{Username}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7467e573-0688-4b1f-a3a6-fb62a00f1332",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2e71f957-76bb-4841-a294-a9901dd739ea",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
